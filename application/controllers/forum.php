@@ -9,6 +9,11 @@
 
 class Forum extends CI_Controller
 {
+    public function index()
+	{
+		$this->accueil();
+    }
+
 	public function accueil()
 	{
 		echo 'Hello World!';
