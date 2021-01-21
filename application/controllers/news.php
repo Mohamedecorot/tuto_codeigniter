@@ -19,6 +19,8 @@ class News extends CI_Controller
 		$data['en_ligne'] = true;
 
 		//	Maintenant, les variables sont disponibles dans la vue
-		$this->load->view('vue', $data);
+        $this->load->view('news/vue', $data, true);
+        $this->load->helper('url');
+
 	}
 }
