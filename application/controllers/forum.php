@@ -9,6 +9,18 @@
 
 class Forum extends CI_Controller
 {
+    private $titre_defaut;
+
+	public function __construct()
+	{
+		//	Obligatoire
+		parent::__construct();
+
+		//	Maintenant, ce code sera exécuté chaque fois que ce contrôleur sera appelé.
+		$this->titre_defaut = 'Mon super site';
+		echo 'Bonjour !';
+    }
+
     public function index()
 	{
 		$this->accueil();
@@ -16,7 +28,13 @@ class Forum extends CI_Controller
 
 	public function accueil()
 	{
-		echo 'Hello World!';
+		echo 'Bonjour';
+	}
+
+	//	L'affichage de la variable $output est le comportement par défaut.
+	public function _output($output)
+	{
+		var_dump($output);
 	}
 
 	//	Cette page accepte une variable $_GET facultative
