@@ -313,3 +313,18 @@ switch (ENVIRONMENT)
  * And away we go...
  */
 require_once BASEPATH.'core/CodeIgniter.php';
+
+
+    //    Chargement de la bibliothèque
+    $this->load->library('pagination');
+
+    //    Initialisation des paramètres d'utilisation de la pagination
+    define('NB_COMMENTAIRE_PAR_PAGE', 15);
+    define('NB_COMMENTAIRE_SAUVEGARDE_EN_BDD', 4587);
+
+    $this->pagination->initialize(array('base_url' => base_url() . 'index.php/livreor/voir/',
+                        'total_rows' => NB_COMMENTAIRE_SAUVEGARDE_EN_BDD,
+                        'per_page' => NB_COMMENTAIRE_PAR_PAGE));
+
+    //    Récupération du HTML
+    $html_pagination = $this->pagination->create_links();
