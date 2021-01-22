@@ -98,13 +98,22 @@ class News_model extends CI_Model
                     ->count_all_results($this->table);
     }
 
-	/**
-	 *	Retourne une liste de news
-	 */
-	public function liste_news()
-	{
-
-	}
+    /**
+     *	Retourne une liste de $nb dernières news.
+    *
+    *	@param integer $nb	Le nombre de news
+    *	@param integer $debut	Nombre de news à sauter
+    *	@return objet		La liste de news
+    */
+    public function liste_news($nb = 10, $debut = 0)
+    {
+        return $this->db->select('*')
+                ->from($this->table)
+                ->limit($nb, $debut)
+                ->order_by('id', 'desc')
+                ->get()
+                ->result();
+    }
 }
 
 
