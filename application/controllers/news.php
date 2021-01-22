@@ -11,19 +11,19 @@ class News extends CI_Controller
 		$this->accueil();
 	}
 
-	// public function accueil()
-	// {
-	// 	$data = array();
-	// 	$data['pseudo'] = 'Arthur';
-	// 	$data['email'] = 'email@ndd.fr';
-	// 	$data['en_ligne'] = true;
+	public function accueil()
+	{
+		$data = array();
+		$data['pseudo'] = 'Arthur';
+		$data['email'] = 'email@ndd.fr';
+		$data['en_ligne'] = true;
 
-	// 	//	Maintenant, les variables sont disponibles dans la vue
-    //     $this->load->view('news/vue', $data, false);
-    //     $this->load->helper('url');
-    //     $this->load->helper('assets');
+		//	Maintenant, les variables sont disponibles dans la vue
+        $this->load->view('news/vue', $data, false);
+        $this->load->helper('url');
+        $this->load->helper('assets');
 
-    // }
+    }
 
 
     // public function accueil()
@@ -36,12 +36,12 @@ class News extends CI_Controller
 	// var_dump($resultat);
     // }
 
-    public function accueil()
-{
-	$this->load->model('news_model', 'newsManager');
+    // public function accueil()
+    // {
+    //     $this->load->model('news_model', 'newsManager');
 
-	$nb_news = $this->newsManager->count();
-    $nb_news_de_bob = $this->newsManager->count(array('auteur' => 'Bob'));
-    var_dump($nb_news, $nb_news_de_bob);
-}
+    //     $nb_news = $this->newsManager->count();
+    //     $nb_news_de_bob = $this->newsManager->count(array('auteur' => 'Bob'));
+    //     var_dump($nb_news, $nb_news_de_bob);
+    // }
 }
