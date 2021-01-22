@@ -6,11 +6,37 @@ class News_model extends CI_Model
 
 	/**
 	 *	Ajoute une news
+	 *
+	 *	@param string $auteur 	L'auteur de la news
+	 *	@param string $titre 	Le titre de la news
+	 *	@param string $contenu 	Le contenu de la news
+	 *	@return bool		Le résultat de la requête
 	 */
-	public function ajouter_news()
+	public function ajouter_news($auteur, $titre, $contenu)
 	{
+		//	Ces données seront automatiquement échappées
+		$this->db->set('auteur',  $auteur);
+		$this->db->set('titre',   $titre);
+		$this->db->set('contenu', $contenu);
 
-	}
+		//	Ces données ne seront pas échappées
+		$this->db->set('date_ajout', 'NOW()', false);
+		$this->db->set('date_modif', 'NOW()', false);
+
+		//	Une fois que tous les champs ont bien été définis, on "insert" le tout
+		return $this->db->insert($this->table);
+    }
+
+    // Equivalent à
+    // public function ajouter_news($auteur, $titre, $contenu)
+    // {
+	// return $this->db->set('auteur',	 $auteur)
+	// 		->set('titre', 	 $titre)
+	// 		->set('contenu', $contenu)
+	// 		->set('date_ajout', 'NOW()', false)
+	// 		->set('date_modif', 'NOW()', false)
+	// 		->insert($this->table);
+    // }
 
 	/**
 	 *	Édite une news déjà existante
