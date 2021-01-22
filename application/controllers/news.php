@@ -24,13 +24,24 @@ class News extends CI_Controller
     //     $this->load->helper('assets');
 
     // }
+
+
+    // public function accueil()
+    // {
+	// $this->load->model('news_model', 'newsManager');
+
+	// $resultat = $this->newsManager->ajouter_news('Arthur',
+	// 					     'Un super titre',
+	// 					     'Un super contenu !');
+	// var_dump($resultat);
+    // }
+
     public function accueil()
-    {
+{
 	$this->load->model('news_model', 'newsManager');
 
-	$resultat = $this->newsManager->ajouter_news('Arthur',
-						     'Un super titre',
-						     'Un super contenu !');
-	var_dump($resultat);
-    }
+	$nb_news = $this->newsManager->count();
+    $nb_news_de_bob = $this->newsManager->count(array('auteur' => 'Bob'));
+    var_dump($nb_news, $nb_news_de_bob);
+}
 }
