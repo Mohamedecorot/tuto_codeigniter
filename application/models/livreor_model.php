@@ -22,10 +22,20 @@ class Livreor_model extends CI_Model
         return $this->db->count_all($this->table);
     }
 
-	public function get_commentaires($nb, $debut = 0)
-	{
+    public function get_commentaires($nb, $debut = 0)
+    {
+        if(!is_integer($nb) OR $nb < 1 OR !is_integer($debut) OR $debut < 0)
+        {
+            return false;
+        }
 
-	}
+        return $this->db->select('`id`, `pseudo`, `message`, DATE_FORMAT(`date`,\'%d/%m/%Y &agrave; %H:%i:%s\') AS \'date\'', false)
+                ->from($this->table)
+                ->order_by('id', 'desc')
+                ->limit($nb, $debut)
+                ->get()
+                ->result();
+    }
 }
 
 /* End of file livreor_model.php */
