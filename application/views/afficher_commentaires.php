@@ -5,14 +5,72 @@
 		<title>Un livre d'or avec CodeIgniter</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=<?php echo $this->config->item('charset'); ?>" />
 		<link rel="stylesheet" type="text/css" media="screen" href="<?php echo css_url('livreor/style'); ?>" />
-	</head>
+    </head>
+    <style>
+        *
+        {
+            margin: 0;
+            padding: 0;
+        }
+
+        .pagination
+        {
+            text-align: center;
+        }
+
+        #messages
+        {
+            margin: auto;
+            width: 80%;
+        }
+
+        #messages .message
+        {
+            margin: 1% auto;
+            padding: 3%;
+            border: 1px outset red;
+        }
+
+        form
+        {
+            margin: 2% auto;
+            padding: 1.5%;
+            width: 85%;
+            border: 1px inset green;
+            text-align: center;
+        }
+
+        form input
+        {
+            margin-bottom: 1.5%;
+        }
+
+        form textarea
+        {
+            margin-bottom: 1.5%;
+            width: 70%;
+        }
+
+        #confirmation
+        {
+            margin: 1%;
+            padding: 1.5%;
+            border: 1px outset blue;
+            color: rgb(158, 10, 10);
+        }
+
+        .form_erreur
+        {
+            color: red;
+        }
+    </style>
 
 	<body>
 		<div id="messages">
 
 			<p>
 				Il y a actuellement <?php echo $nb_commentaires; ?> commentaires. <br />
-				<?php echo url('écrire un commentaire', 'livreor/ecrire'); ?>
+				<?php echo url('écrire un commentaire', 'livreor/ecrire'); ?>
 			</p>
 
 			<div class="pagination"><?php echo $pagination; ?></div>
