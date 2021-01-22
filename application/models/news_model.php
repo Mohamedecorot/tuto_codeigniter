@@ -38,13 +38,40 @@ class News_model extends CI_Model
 	// 		->insert($this->table);
     // }
 
-	/**
-	 *	Édite une news déjà existante
-	 */
-	public function editer_news()
-	{
+    /**
+     *	Édite une news déjà existante
+    *
+    *	@param integer $id	L'id de la news à modifier
+    *	@param string  $titre 	Le titre de la news
+    *	@param string  $contenu Le contenu de la news
+    *	@return bool		Le résultat de la requête
+    */
+    public function editer_news($id, $titre = null, $contenu = null)
+    {
+        //	Il n'y a rien à éditer
+        if($titre == null AND $contenu == null)
+        {
+            return false;
+        }
 
-	}
+        //	Ces données seront échappées
+        if($titre != null)
+        {
+            $this->db->set('titre', $titre);
+        }
+        if($contenu != null)
+        {
+            $this->db->set('contenu', $contenu);
+        }
+
+        //	Ces données ne seront pas échappées
+        $this->db->set('date_modif', 'NOW()', false);
+
+        //	La condition
+        $this->db->where('id', (int) $id);
+
+        return $this->db->update($this->table);
+    }
 
 	/**
 	 *	Supprime une news
